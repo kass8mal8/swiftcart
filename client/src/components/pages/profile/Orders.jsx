@@ -69,18 +69,31 @@ const Orders = () => {
                                 <Typography variant='body2'>KES {itemPrice + 10}</Typography>
                             </Stack>
                         </Box>
-                        <Button 
-                            variant='contained' 
-                            disableElevation
-                            fullWidth
-                            sx={{
-                                background:'#db342a',
-                                borderRadius: '20px',
-                                marginTop: '20px',
-                                marginBottom: '70px'
-                            }}
-                        >leave feedback
-                        </Button>
+                        <Stack direction='row' spacing={2} sx={{marginBottom: '70px', marginTop: '20px'}}>
+                            <Button 
+                                variant='outlined'
+                                disableElevation
+                                fullWidth
+                                sx={{
+                                    borderRadius: '20px',
+                                    textTransform: 'capitalize',
+                                    color: 'black',
+                                    borderColor: 'black'
+                                }}
+                            >reorder
+                            </Button>
+                            <Button 
+                                variant='contained' 
+                                disableElevation
+                                fullWidth
+                                sx={{
+                                    background:'#db342a',
+                                    borderRadius: '20px',
+                                    textTransform: 'capitalize'
+                                }}
+                            >leave feedback
+                            </Button>
+                        </Stack>
 
                     </Box>
                 )) : <EmptyCart />
