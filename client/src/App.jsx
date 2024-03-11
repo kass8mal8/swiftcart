@@ -18,7 +18,7 @@ import Orders from "./components/pages/profile/Orders"
 
 export const AuthContext = createContext({})
 export const BagContext = createContext()
-export const ProductContext = createContext()
+export const AddressContext = createContext()
 
 const App =()=> {
   const location = useLocation();
@@ -30,7 +30,7 @@ const App =()=> {
   })
   const [auth, setAuth] = useState({})
   const [bagCount, setBagCount] = useState(0)
-  const [productId, setProductId] = useState(null)
+  const [address, setAddress] = useState({})
   const queryClient = new QueryClient()
 
   const user = useContext(AuthContext)
@@ -39,7 +39,7 @@ const App =()=> {
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
         <BagContext.Provider value={{ bagCount, setBagCount }}>
-        <ProductContext.Provider value={{ productId, setProductId }}>
+        <AddressContext.Provider value={{ address, setAddress }}>
           <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
                 <Box className='container'>
@@ -62,7 +62,7 @@ const App =()=> {
                 { !paths.includes(location.pathname) && <BottomNav /> }
             </ThemeProvider>
           </QueryClientProvider>
-        </ProductContext.Provider>
+        </AddressContext.Provider>
         </BagContext.Provider>
     </AuthContext.Provider>
   )

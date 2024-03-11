@@ -4,7 +4,7 @@ import usePost from "../../hooks/usePost";
 import { useState, useEffect, useContext } from 'react';
 import useCountUpdate from "../../hooks/useCountUpdate";
 import useDelete from "../../hooks/useDelete";
-import { AuthContext, ProductContext } from "../../../App";
+import { AuthContext } from "../../../App";
 import useFetch from "../../hooks/useFetch";
 import EmptyCart from "./EmptyCart";
 import { useQueryClient } from "@tanstack/react-query"

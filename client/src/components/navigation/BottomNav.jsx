@@ -23,7 +23,7 @@ const BottomNav = () => {
             value={value}
             onChange={(event, newValue) => setValue(newValue)}
         >
-            <BottomNavigationAction sx={{ color: '#db3022' }} label='Home' icon={<Home />} onClick={() => navigate('/')} />
+            <BottomNavigationAction label='Home' icon={<Home />} onClick={() => navigate('/')} />
             <BottomNavigationAction label="Shop" icon={<ShoppingCartOutlined />} onClick={() => navigate('/shop')} />
             <BottomNavigationAction 
                 label="Bag" 

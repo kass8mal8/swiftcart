@@ -1,9 +1,10 @@
 import { Button, InputAdornment, TextField, Typography } from "@mui/material";
 import usePost from "../../hooks/usePost";
 import { useState, useContext, useEffect } from 'react';
-import { AuthContext } from "../../../App";
+import { AddressContext, AuthContext } from "../../../App";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query"
 
 const ShippingForm = () => {
     const [shipDetails, setShipDetails] = useState({})
@@ -13,18 +14,26 @@ const ShippingForm = () => {
     const userEditURI = `http://localhost:5000/api/users/edit/${user_id}`
     const { post, loading, error } = usePost(url)
     const navigate = useNavigate()
+    const { setAddress } = useContext(AddressContext)
 
     const handleChange = (e) => {
         setShipDetails({
             ...shipDetails, [e.target.name]: e.target.value
         })
-        console.log(shipDetails)
+        setAddress({
+            ...shipDetails, [e.target.name]: e.target.value
+        })
+        console.log(address)
+
     }
 
     const name = `${user.first_name} ${user.surname}`
     useEffect(() => {
         setShipDetails({...shipDetails, user_id, name})
     }, []);
+
+    const queryClient = useQueryClient()
+    const refetchUser = () => queryClient.invalidateQueries(['users'])
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -36,6 +45,7 @@ const ShippingForm = () => {
             const editUserAddress = await axios.put(userEditURI, {address} )
             const result = await editUserAddress.data
 
+            refetchUser()
             navigate('/profile')
         } catch (error) {
             console.log(error.message)
