@@ -1,0 +1,127 @@
+@font-face {
+  font-family: sen;
+  src: url(../../assets//font/Sen-Regular.ttf);
+}
+.auth .form {
+  margin-top: 50px;
+}
+.auth .form .input {
+  margin: 10px auto;
+}
+.auth .form .submit-btn {
+  padding: 12px;
+  background: #db3022;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+body {
+  position: relative;
+}
+
+.container {
+  width: 95%;
+  transform: translateX(2.5%);
+  font-family: sen;
+}
+.container .btn {
+  background: #db3022;
+}
+.container .auth-text {
+  font-weight: 800;
+}
+.container .preview {
+  overflow-x: scroll;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  width: 110%;
+  margin-left: -20px;
+}
+.container .preview:nth-of-type(2) {
+  margin-bottom: 50px;
+}
+.container .preview .card {
+  width: 40%;
+  margin: 0 10px;
+  background: whitesmoke;
+  align-items: center;
+  border-radius: 10px;
+}
+.container .preview .card:nth-of-type(1) {
+  margin-left: 0;
+}
+.container .preview .card:nth-of-type(5) {
+  margin-right: 0;
+}
+.container .preview .card .card-content {
+  padding-inline: 10px;
+}
+.container .home .hero {
+  margin-top: -8px;
+}
+.container .home .hero img {
+  width: 101vw;
+  margin-left: -20px;
+}
+.container .home .hero .hero-text {
+  margin-top: -25%;
+  color: white;
+}
+.container .home .new {
+  position: relative;
+  margin-top: 50px;
+}
+.container .categories {
+  background: whitesmoke;
+  padding-block: 10px;
+}
+.container .categories .selection {
+  background: #000;
+  color: white;
+  padding: 5px 21px;
+  border-radius: 40px;
+}
+.container .categories .selection:nth-of-type(1) {
+  margin-right: 10px;
+}
+.container .filter {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  width: 103%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  left: -17px;
+  padding-block: 10px;
+  padding-left: 18px;
+  padding-right: 5px;
+  box-shadow: 0 3px 5px whitesmoke;
+}
+.container .profile {
+  margin-top: 30px;
+  align-items: center;
+}
+.container .profile .aside {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+}
+.container .bag .card {
+  background: whitesmoke;
+  padding-right: 10px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+.container .bag .checkout-btn {
+  background: #db3022;
+  text-transform: capitalize;
+  padding: 10px;
+  box-shadow: none;
+  font-size: 18px;
+  border-radius: 40px;
+}
