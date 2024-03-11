@@ -33,19 +33,15 @@ const Checkout = () => {
     const handleOrderSubmit = async(e) => {
         e.preventDefault()
         try {
-            const response = await post(orderDetails)
-            
-            const result = await initiateDelete(deleteURI)
-            console.log(result)
+            await post(orderDetails)
+            await initiateDelete(deleteURI)
+
             navigate('/success')
         } catch (error) {
             console.log(error.message)
         }
     }
 
-
-    console.log(arr)
-    console.log(user)
     const initialPrice = arr.length && arr.reduce( (a, b) => a + b)
     const fee = 10
 

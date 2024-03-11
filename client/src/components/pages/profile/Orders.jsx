@@ -50,7 +50,7 @@ const Orders = () => {
                                 <Stack direction='row' spacing={2}>
                                     <img src={item.image} alt="an item" width='25%' />
                                     <Box sx={{ paddingBlock: '10px' }}>
-                                        <Typography variant='body2' sx={{ fontWeight: '600' }}>{item.title}</Typography>
+                                        <Typography variant='body2' sx={{ fontWeight: '600' }}>{item.title.slice(0, 35)}</Typography>
                                         <Typography variant="body2">Units: {item.count}</Typography>
                                         <Typography variant="body2">KES {item.price}</Typography>
                                     </Box>
@@ -58,7 +58,7 @@ const Orders = () => {
                             </Box>
                         ))}
 
-                        <Box sx={{ marginTop:'20px' }}>
+                        <Box sx={{ marginTop:'20px', marginBottom: '20px' }}>
                             <Typography variant="body2" sx={{ fontWeight: '600', marginBottom: '10px' }}>Order Information</Typography>
                             <Stack direction='row' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography variant="body2" color='text.secondary'>Shipping Address</Typography>
@@ -76,7 +76,8 @@ const Orders = () => {
                             sx={{
                                 background:'#db342a',
                                 borderRadius: '20px',
-                                marginTop: '20px'
+                                marginTop: '20px',
+                                marginBottom: '70px'
                             }}
                         >leave feedback
                         </Button>
