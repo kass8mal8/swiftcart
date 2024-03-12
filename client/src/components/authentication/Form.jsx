@@ -10,7 +10,7 @@ import { jwtDecode } from 'jwt-decode'
 const Form = () => {
     const location = useLocation()
     const navigate = useNavigate()
-    const url = 'http://localhost:5000/auth'
+    const url = 'https://swiftcart-xdrc.onrender.com/auth'
     const endpoint = location.pathname === "/signin" ? `${url}/signin` : `${url}/signup`
     
     const { post, error, loading } = usePost(endpoint)
@@ -38,7 +38,7 @@ const Form = () => {
             if(!error && location.pathname === '/signup') {
                 navigate('/signin')
             }
-            else if(!error && location.pathname === '/signin') {
+            else if(!error && (location.pathname === '/signin')) {
                 navigate('/')
             }
 

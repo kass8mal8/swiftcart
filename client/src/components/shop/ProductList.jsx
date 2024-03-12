@@ -3,42 +3,45 @@ import { Box, Card, CardContent, CardMedia, Grid, IconButton, Stack, Typography 
 import { useContext, useState } from "react";
 import { AuthContext, BagContext } from "../../App";
 import usePost from "../hooks/usePost";
+import useAddToCart from "../hooks/useAddToCart";
 
 const ProductList = ({ products }) => {
-    const url = 'http://localhost:5000/api/cart/add'
-    const { bagCount, setBagCount } = useContext(BagContext)
-    const { post, error } = usePost(url)
+    // const url = 'https://swiftcart-xdrc.onrender.com/api/cart/add'
+    // const { bagCount, setBagCount } = useContext(BagContext)
+    // const { post, error } = usePost(url)
     const { auth: user } = useContext(AuthContext)
-    const [isClicked, setIsClicked] = useState(false)
+    // const [isClicked, setIsClicked] = useState(false)
 
-    const addToCart = async(product) => {
-        setIsClicked(true)
-        const productDetails = {
-            user_id: user.user_id,
-            title: product.title,
-            price: product.price,
-            description: product.description,
-            image: product.image,
-            count: 1
-        }
+    const { addToCart } = useAddToCart()
 
-        console.log(productDetails)
+    // const addToCart = async(product) => {
+    //     // setIsClicked(true)
+    //     const productDetails = {
+    //         user_id: user.user_id,
+    //         title: product.title,
+    //         price: product.price,
+    //         description: product.description,
+    //         image: product.image,
+    //         count: 1
+    //     }
 
-        try {
-            const response = await post(productDetails)
-            if(!error && response) {
-                console.log(response)
-                setBagCount(bagCount + 1)
-            }
-            else {
-                setIsClicked(false)
-                console.log("Could not complete that action")
-            }
-        } catch (error) {
-            setIsClicked(false)
-            console.log(error.message)
-        }
-    }
+    //     console.log(productDetails)
+
+    //     try {
+    //         const response = await post(productDetails)
+    //         if(!error && response) {
+    //             console.log(response)
+    //             setBagCount(bagCount + 1)
+    //         }
+    //         else {
+    //             setIsClicked(false)
+    //             console.log("Could not complete that action")
+    //         }
+    //     } catch (error) {
+    //         setIsClicked(false)
+    //         console.log(error.message)
+    //     }
+    // }
     return (  
         <Grid container spacing={2} >
             { products?.map( product => (
@@ -56,7 +59,7 @@ const ProductList = ({ products }) => {
                                     <Typography variant='body2' color='text.secondary' sx={{fontWeight: 'bold'}} >{product.title?.slice(0, 26)}</Typography>
                                     <Typography variant='h6' gutterbottom sx={{fontWeight: 'bold'}}>${product.price}</Typography>
                                 </Box>
-                                <IconButton  onClick={() => addToCart(product)} sx={{ background: 'whitesmoke', height: '50px', width: '50px', padding: '10px',  marginTop: '-40px' }} >
+                                <IconButton  onClick={() => addToCart(product, user)} sx={{ background: 'whitesmoke', height: '50px', width: '50px', padding: '10px',  marginTop: '-40px' }} >
                                     <Add sx={{ color: '#db3022' }} />
                                 </IconButton>
                             </Stack>

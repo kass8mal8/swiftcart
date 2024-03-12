@@ -8,7 +8,7 @@ import EmptyCart from "../bag/EmptyCart";
 const Orders = () => {
     const { auth: user } = useContext(AuthContext)
     const { user_id } = user
-    const url = `http://localhost:5000/api/orders/${user_id}`
+    const url = `https://swiftcart-xdrc.onrender.com/api/orders/${user_id}`
     const fetchOrders = async() => {
         const res = await axios.get(url)
         console.log(res)

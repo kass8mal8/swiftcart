@@ -10,7 +10,7 @@ import Checkout from "./Checkout";
 const ShoppingCart = () => {
     const { auth: user } = useContext(AuthContext)
     const { user_id } = user
-    const url = `http://localhost:5000/api/cart/${user_id}`
+    const url = `https://swiftcart-xdrc.onrender.com/api/cart/${user_id}`
     const { data: products, loading, error } = useFetch(url)
     console.log(user_id)
     console.log(products)

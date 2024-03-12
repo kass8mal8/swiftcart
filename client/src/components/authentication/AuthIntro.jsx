@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const AuthIntro = () => {
     const location = useLocation()
+    const arr = ['/signin','/']
 
     return (  
         <>
@@ -11,7 +12,7 @@ const AuthIntro = () => {
                 <ArrowBackIos sx={{ color: 'black' }} />
             </IconButton>
             <Typography variant='h4' className="auth-text" mt={12}>
-                { location.pathname === '/signin' ? "Login" : "Signup" }
+                { arr.includes(location.pathname) ? "Login" : "Signup" }
             </Typography>
         </>
     );

@@ -4,7 +4,7 @@ import Signup from './components/authentication/Signup'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import "./styles/css/index.css"
 import Home from "./components/pages/home/Home"
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 import BottomNav from "./components/navigation/BottomNav"
 import Profile from "./components/pages/profile/Profile"
 import Shop from "./components/shop/Shop"
@@ -32,6 +32,12 @@ const App =()=> {
   const [bagCount, setBagCount] = useState(0)
   const [address, setAddress] = useState({})
   const queryClient = new QueryClient()
+  const [tokenState, setTokenState] = useState()
+
+  const userData = localStorage.getItem('user')
+  useEffect(() => {
+    setTokenState(userData)
+  }, [userData]);
 
   const user = useContext(AuthContext)
   console.log(user)
@@ -44,7 +50,7 @@ const App =()=> {
             <ThemeProvider theme={theme}>
                 <Box className='container'>
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element= {tokenState ? <Home /> : <Signin /> } />
                     <Route path='/signin' element={<Signin />} />
                     <Route path='/signup' element={<Signup />} />
                     <Route path='/shop' element={<Shop />} />

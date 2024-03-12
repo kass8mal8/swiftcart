@@ -1,13 +1,17 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import Loader from "./Loader";
 import { Add } from "@mui/icons-material"
-import { BagContext } from "../../../App";
-import { useContext } from "react"
+import { AuthContext, BagContext } from "../../../App";
+import { useContext, useReducer } from "react"
+import useAddToCart from "../../hooks/useAddToCart";
 
 const NewPreview = ({ products }) => {
     const mapSkeleton = [1, 2, 3, 4, 5]
-    const { bagCount, setBagCount } = useContext(BagContext)
+    // const { bagCount, setBagCount } = useContext(BagContext)
     // console.log(products.title)
+    const { addToCart } = useAddToCart()
+    const { auth: user } = useContext(AuthContext)
+
   return (  
     <Box className='preview'>
       {products ? 
@@ -24,7 +28,7 @@ const NewPreview = ({ products }) => {
                     ${product.price}
                     </Typography>
                     <IconButton 
-                      onClick={() => setBagCount(bagCount + 1)} 
+                      onClick={() => addToCart(product, user)} 
                       sx={{ 
                         position: 'relative', 
                         top: '-48px', left: '60%',

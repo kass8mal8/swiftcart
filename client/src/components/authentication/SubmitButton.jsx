@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 
 const SubmitButton = ({ loading }) => {
     const location = useLocation()
-    const text = location.pathname === '/signin' ? 'login' : 'signup'
+    const arr = ['/signin','/']
+    const text = arr.includes(location.pathname) ? 'login' : 'signup'
     const condition = loading ? 'please wait...' : text
     
     return (  
