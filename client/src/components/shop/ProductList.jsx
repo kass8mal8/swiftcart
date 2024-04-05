@@ -6,7 +6,7 @@ import usePost from "../hooks/usePost";
 import useAddToCart from "../hooks/useAddToCart";
 
 const ProductList = ({ products }) => {
-    // const url = 'https://swiftcart-xdrc.onrender.com/api/cart/add'
+    // const url = 'http://localhost:5000/api/cart/add'
     // const { bagCount, setBagCount } = useContext(BagContext)
     // const { post, error } = usePost(url)
     const { auth: user } = useContext(AuthContext)

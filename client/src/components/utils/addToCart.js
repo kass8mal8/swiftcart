@@ -1,4 +1,10 @@
+import { useContext } from "react"
+import { BagContext } from "../../App"
+import usePost from "../hooks/usePost"
+
 const addToCart = async(product, user) => {
+    const { bagCount, setBagCount } = useContext(BagContext)
+    const { post } = usePost(webkitURL)
     // setIsClicked(true)
     const productDetails = {
         user_id: user.user_id,

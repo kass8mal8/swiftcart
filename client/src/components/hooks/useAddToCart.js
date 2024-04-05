@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import usePost from "./usePost"
-import { AuthContext } from "../../App"
+import { BagContext } from "../../App"
 
 const useAddToCart = () => {
+    const url = 'http://localhost:5000/api/cart/add'
+    const { post, error } = usePost(url)
+    const { bagCount, setBagCount } = useContext(BagContext)
     const addToCart = async(product, user) => {
-        const { post, error } = usePost(url)
-        const { bagCount, setBagCount } = useContext(AuthContext)
-        const url = 'https://swiftcart-xdrc.onrender.com/api/cart/add'
 
         // setIsClicked(true)
         const productDetails = {

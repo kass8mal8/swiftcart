@@ -26,7 +26,7 @@ const FilledBag = ({ products }) => {
     const refetchProducts = () => queryClient.invalidateQueries(['products'])
 
     const handleFilter = async(id) => {
-        const url = `https://swiftcart-xdrc.onrender.com/api/cart/update/${id}`
+        const url = `http://localhost:5000/api/cart/update/${id}`
 
         try {
             const response = await initiateDelete(url)
@@ -41,7 +41,7 @@ const FilledBag = ({ products }) => {
     const {initiateDelete} = useDelete()
 
     const handleCountUpdate = async(type, productId) => {
-        const url = `https://swiftcart-xdrc.onrender.com/api/cart/update/${productId}`
+        const url = `http://localhost:5000/api/cart/update/${productId}`
         
         let newCount;
         let countIsOne = false;
@@ -83,7 +83,7 @@ const FilledBag = ({ products }) => {
         }
     }
 
-    // const orderURI = 'https://swiftcart-xdrc.onrender.com/api/orders/place-order'
+    // const orderURI = 'http://localhost:5000/api/orders/place-order'
     // const { post } = usePost(orderURI)
 
     return (  
