@@ -1,6 +1,6 @@
 import { Box, IconButton, Paper, Stack, Typography, Button } from "@mui/material";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../../App";
+import { AuthContext, BagContext } from "../../../App";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import useFetch from "../../hooks/useFetch";
 import usePost from "../../hooks/usePost";
@@ -15,6 +15,7 @@ const Checkout = () => {
     const orderURI = 'http://localhost:5000/api/orders/place-order'
     const deleteURI = `http://localhost:5000/api/cart/delete/${user_id}`
     const { data: products, loading, error } = useFetch(url)
+    const {setBagCount} = useContext(BagContext)
     // const [checkoutProds, setCheckoutProds] = useState(products?.product || [])
 
     const { post } = usePost(orderURI)
@@ -36,7 +37,7 @@ const Checkout = () => {
         try {
             await post(orderDetails)
             await initiateDelete(deleteURI)
-
+            setBagCount(0)
             navigate('/success')
         } catch (error) {
             console.log(error.message)

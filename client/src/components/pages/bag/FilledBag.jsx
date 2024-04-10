@@ -4,7 +4,7 @@ import usePost from "../../hooks/usePost";
 import { useState, useEffect, useContext } from 'react';
 import useCountUpdate from "../../hooks/useAddToCart";
 import useDelete from "../../hooks/useDelete";
-import { AuthContext } from "../../../App";
+import { AuthContext, BagContext } from "../../../App";
 import useFetch from "../../hooks/useFetch";
 import EmptyCart from "./EmptyCart";
 import { useQueryClient } from "@tanstack/react-query"
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const FilledBag = ({ products }) => {
     const { auth: user } = useContext(AuthContext)  
+    const { bagCount, setBagCount } = useContext(BagContext)
     const { user_id } = user
     const [prods, setProds] = useState(products)
     const navigate = useNavigate()
@@ -31,6 +32,9 @@ const FilledBag = ({ products }) => {
         try {
             const response = await initiateDelete(url)
             console.log(response.message)
+            setBagCount( prev => prev - 1)
+            // setProds(prods.filter( prod => prod.id !== id))
+            // console.log(prods)
             refetchProducts()
         }
         catch(err) {

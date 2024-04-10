@@ -57,7 +57,7 @@ const ProductList = ({ products }) => {
                             <Stack direction='row'>
                                 <Box>
                                     <Typography variant='body2' color='text.secondary' sx={{fontWeight: 'bold'}} >{product.title?.slice(0, 26)}</Typography>
-                                    <Typography variant='h6' gutterbottom sx={{fontWeight: 'bold'}}>${product.price}</Typography>
+                                    <Typography variant='h6' gutterbottom sx={{fontWeight: 'bold'}}>Ksh {product.price}</Typography>
                                 </Box>
                                 <IconButton  onClick={() => addToCart(product, user)} sx={{ background: 'whitesmoke', height: '50px', width: '50px', padding: '10px',  marginTop: '-40px' }} >
                                     <Add sx={{ color: '#db3022' }} />

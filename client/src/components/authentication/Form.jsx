@@ -6,6 +6,7 @@ import { useState, useContext, useEffect } from "react";
 import usePost from "../hooks/usePost";
 import { AuthContext } from "../../App";
 import { jwtDecode } from 'jwt-decode'
+import Toast from '../Toast'
 
 const Form = () => {
     const location = useLocation()
@@ -18,6 +19,13 @@ const Form = () => {
     const [isVisible, setIsVisible] = useState(false)
     const { auth, setAuth } = useContext(AuthContext)
     console.log(useContext(AuthContext))
+    const [open, setOpen] = useState(false)
+    const [errMsg, setErrMsg] = useState('')
+
+    const handleClose = (e, reason) => {
+        if(reason === 'clickaway') return
+        setOpen(false)
+    }
 
     const handleChange = (e) => {
         setUserData({
@@ -41,17 +49,18 @@ const Form = () => {
             else if(!error && (location.pathname === '/signin')) {
                 navigate('/')
             }
+            console.log(response)
 
         } catch (error) {
-            console.log(error)
+            setErrMsg(error.message)
+            setOpen(true)
+            console.log(error.message)
         }
     }
 
-    // useEffect(()=>console.log('auth', auth), [auth])
-    // console.log(auth)
-
     return (  
         <form className='form' onSubmit={handleSubmit}>
+            <Toast open={open} handleClose={handleClose} error={"Incorrect credentials"} data={null} />
                 { location.pathname === '/signup' && 
                     <Stack direction='row' spacing={2} mb={1}>
                         <TextField 

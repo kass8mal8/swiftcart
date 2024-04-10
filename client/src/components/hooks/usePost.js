@@ -22,8 +22,12 @@ const usePost = (url) => {
                 body: JSON.stringify(body)
             })
             const result = await response.json()
-            console.log(result)
+            // console.log(response)
             // console.log(paths.includes(location.pathname))
+
+            if(result.message === 'incorrect credentials') {
+                setError(result.message)
+            }
 
             if(response.status !== 200) {
                 setError(result.message)
@@ -42,6 +46,7 @@ const usePost = (url) => {
         } catch (error) {
             setError(error.message)
             setLoading(false)
+            console.log(error.message)
         }
         finally {
             setError(null)
