@@ -8,9 +8,6 @@ const AuthIntro = () => {
 
     return (  
         <>
-            <IconButton sx={{padding: '10px', marginLeft: '-10px', marginTop: '20px'}}>
-                <ArrowBackIos sx={{ color: 'black' }} />
-            </IconButton>
             <Typography variant='h4' className="auth-text" mt={12}>
                 { arr.includes(location.pathname) ? "Login" : "Signup" }
             </Typography>

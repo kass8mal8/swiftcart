@@ -33,8 +33,10 @@ const FilledBag = ({ products }) => {
             const response = await initiateDelete(url)
             console.log(response.message)
             setBagCount( prev => prev - 1)
-            // setProds(prods.filter( prod => prod.id !== id))
-            // console.log(prods)
+
+            const modProducts = prods.filter( prod => prod._id !== id)
+            setProds(modProducts)
+            console.log(prods)
             refetchProducts()
         }
         catch(err) {
@@ -87,6 +89,10 @@ const FilledBag = ({ products }) => {
         }
     }
 
+    // const handleFilterUpdate = (id) => {
+
+    // }
+
     // const orderURI = 'http://localhost:5000/api/orders/place-order'
     // const { post } = usePost(orderURI)
 
@@ -98,7 +104,7 @@ const FilledBag = ({ products }) => {
             { prods.map( product => ( 
                 <Stack key={product._id} direction='row' spacing={2} mb={2} sx={{ justifyContent: 'space-between' }} className='card'>
                     <img src={product.image} alt='illustration' width='30%' />
-                    <Box>
+                    <Box sx={{ paddingBlock: '10px' }}>
                         <Typography variant='body1' sx={{ fontWeight: '600', marginTop: '10px' }}>{product.title.slice(0, 15)}</Typography>
                         <Stack direction='row' spacing={2} sx={{ alignItems: 'center', marginTop: '20px' }}>
                             <IconButton sx={{background: 'white'}} onClick={() => handleCountUpdate('minus', product._id)}> <Remove /> </IconButton>
