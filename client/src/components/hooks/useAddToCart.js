@@ -3,7 +3,7 @@ import usePost from "./usePost"
 import { BagContext } from "../../App"
 
 const useAddToCart = () => {
-    const url = 'http://localhost:5000/api/cart/add'
+    const url = 'https://swiftcartnpm.onrender.com/api/cart/add'
     const { post, error } = usePost(url)
     const { bagCount, setBagCount } = useContext(BagContext)
     const addToCart = async(product, user) => {

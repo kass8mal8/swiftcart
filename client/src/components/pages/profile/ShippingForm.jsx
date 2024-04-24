@@ -10,8 +10,8 @@ const ShippingForm = () => {
     const [shipDetails, setShipDetails] = useState({})
     const { auth: user } = useContext(AuthContext)
     const { user_id } = user
-    const url = 'http://localhost:5000/api/address/add'
-    const userEditURI = `http://localhost:5000/api/users/edit/${user_id}`
+    const url = 'https://swiftcartnpm.onrender.com/api/address/add'
+    const userEditURI = `https://swiftcartnpm.onrender.com/api/users/edit/${user_id}`
     const { post, loading, error } = usePost(url)
     const navigate = useNavigate()
     const { setAddress } = useContext(AddressContext)

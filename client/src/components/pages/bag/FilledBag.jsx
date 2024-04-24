@@ -27,7 +27,7 @@ const FilledBag = ({ products }) => {
     const refetchProducts = () => queryClient.invalidateQueries(['products'])
 
     const handleFilter = async(id) => {
-        const url = `http://localhost:5000/api/cart/update/${id}`
+        const url = `https://swiftcartnpm.onrender.com/api/cart/update/${id}`
 
         try {
             const response = await initiateDelete(url)
@@ -47,7 +47,7 @@ const FilledBag = ({ products }) => {
     const {initiateDelete} = useDelete()
 
     const handleCountUpdate = async(type, productId) => {
-        const url = `http://localhost:5000/api/cart/update/${productId}`
+        const url = `https://swiftcartnpm.onrender.com/api/cart/update/${productId}`
         
         let newCount;
         let countIsOne = false;
@@ -93,7 +93,7 @@ const FilledBag = ({ products }) => {
 
     // }
 
-    // const orderURI = 'http://localhost:5000/api/orders/place-order'
+    // const orderURI = 'https://swiftcartnpm.onrender.com/api/orders/place-order'
     // const { post } = usePost(orderURI)
 
     return (  

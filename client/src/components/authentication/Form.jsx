@@ -11,7 +11,7 @@ import Toast from '../Toast'
 const Form = () => {
     const location = useLocation()
     const navigate = useNavigate()
-    const url = 'http://localhost:5000/auth'
+    const url = 'https://swiftcartnpm.onrender.com/auth'
     const endpoint = location.pathname === "/signin" ? `${url}/signin` : `${url}/signup`
     
     const { post, error, loading } = usePost(endpoint)

@@ -11,9 +11,9 @@ const Checkout = () => {
     const { auth: user } = useContext(AuthContext)
     const { user_id } = user
     const navigate = useNavigate()
-    const url = `http://localhost:5000/api/cart/${user_id}`
-    const orderURI = 'http://localhost:5000/api/orders/place-order'
-    const deleteURI = `http://localhost:5000/api/cart/delete/${user_id}`
+    const url = `https://swiftcartnpm.onrender.com/api/cart/${user_id}`
+    const orderURI = 'https://swiftcartnpm.onrender.com/api/orders/place-order'
+    const deleteURI = `https://swiftcartnpm.onrender.com/api/cart/delete/${user_id}`
     const { data: products, loading, error } = useFetch(url)
     const {setBagCount} = useContext(BagContext)
     // const [checkoutProds, setCheckoutProds] = useState(products?.product || [])
