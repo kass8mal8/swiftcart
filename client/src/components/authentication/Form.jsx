@@ -115,7 +115,7 @@ const Form = () => {
                             </InputAdornment>
                     }}
                 />
-                { location.pathname === '/signin' && 
+                { ['/signin', '/'].includes(location.pathname) && 
                     <Stack direction='row' spacing={1} sx={{ alignItems: 'center', marginLeft: '44%'}}>
                         <Typography variant='body2'>Don't have an account?</Typography>
                         <ArrowRightAlt sx={{ color: '#ff5c00' }} onClick={() => navigate('/signup')} /> 
